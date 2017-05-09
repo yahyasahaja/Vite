@@ -188,13 +188,33 @@ tr:hover {
     width: 100%;
     position: fixed;
     z-index: 1;
-    color: white;
     max-height: 85px;
 }
 
 .menu-inactive {
     background-color: rgba(255, 255, 255, 0);
     transition: .3s;
+}
+
+.menu-inactive  a, .menu-inactive  a:visited {
+    color: white;
+    transition: .3s;
+}
+
+.menu-inactive:hover a {
+    color: black;
+}
+
+.menu-inactive .button a {
+    border: white solid 1px;
+}
+
+.menu-inactive:hover .button a {
+    border: black solid 1px;
+}
+
+.menu-inactive:hover .button a:hover {
+    border: white solid 1px;
 }
 
 #menu:hover {
@@ -237,8 +257,8 @@ tr:hover {
 }
 
 .button a:hover {    
-    background: rgb(24, 214, 247);
-    border-color: rgb(24, 214, 247);
+    background: #009cff;
+    border-color: #009cff;
     transition: .3s;
     color: white;
     text-decoration: none;
@@ -288,14 +308,6 @@ tr:hover {
     text-decoration: none;
 }
 
-.menu-wrapper a:visited {
-    color: black;
-}
-
-.menu-wrapper a {
-    color: black;
-}
-
 a {
     text-decoration: none;
     color: black;
@@ -311,10 +323,14 @@ a:visited {
 
 /*    HOME    */
 .home-wrapper {
-    background: url('../img/bg-home.jpg') no-repeat;
+    background: url(../img/bg-home-3-update.jpg) no-repeat;
     height: 100%;
     background-color: black;
     box-shadow: #737171 0 0 35px 8px;
+    color: white;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .home-content {
@@ -326,28 +342,33 @@ a:visited {
 }
 
 .home-content h1 {
-    margin-top: -230px;
+    margin-top: -180px;
     font-size: 45pt;
     text-align: center;
     font-weight: 100;
+    border-bottom: white dashed 2px;
 }
 
 .home-content h3 {
-    margin-top: -50px;
+    margin-top: -37px;
     text-align: center;
     font-size: 15pt;
     font-weight: 100;
+    border-top: white solid 1px;
+    line-height: 38px;
 }
 
 .home-button {
     display: inline-block;
     position: absolute;
-    margin-top: -20px;
+    margin-top: 80px;
 }
 
 .home-button a {
     font-size: 17pt;
     padding: 20 35px;
+    border: white solid 1px;
+    color: white;
 }
 
 /*    INVITATION    */

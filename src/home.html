@@ -16,20 +16,70 @@
             
 		    var win = $(window);
             var menu;
+            var allMenu = [];
+            var allMenuTarget = [];
+            var currentMenu;
+            var onTop = true;
 
             function setup() {
                 win.on('scroll', onScrollHandler);
                 menu = $('#menu');
+                currentMenu = $('.menu-home');
+
+                setupScrollMenu();
             }
 
             function onScrollHandler(e) {
+                var winTop = win.scrollTop();
+			    var winBottom = winTop + win.height();
+                
                 if (win.scrollTop() > 30) {
                     menu.addClass('menu-active');
                     menu.removeClass('menu-inactive')
+                    onTop = false;
                 } else {
                     menu.removeClass('menu-active');
                     menu.addClass('menu-inactive');
+                    onTop = true;
                 }
+
+                for (i = 0; i < allMenuTarget.length; i++) {
+                    if (onTop) currentMenu.removeClass("menu-actived");
+                    if (winTop > allMenuTarget[i].offset().top - win.height() / 2)  {
+                        if (currentMenu != allMenu[i].parent()) {
+                            currentMenu.removeClass("menu-actived");
+                            (currentMenu = allMenu[i].parent()).addClass("menu-actived");
+                        }
+                    }
+                }
+            }
+
+            function setupScrollMenu() {
+                var i, loc1 = $("a");
+                
+                loc1.attr('draggable', false);
+                loc1.on('click', function(event) {
+                    if (this.hash !== "") {
+                    event.preventDefault();
+                    
+                    var hash = this.hash;
+                    
+                    $('html, body').animate(
+                        {scrollTop: $(hash).offset().top - 100}, {duration: 800, easing: "easeOutCirc",
+                        complete: function(){
+                            window.location.hash = hash;
+                            window.scrollTo(window.scrollX, $(hash).offset().top - 100);
+                        }});
+                    }
+                });
+                
+                loc1 = $(".menu-content a");
+                for(i = 0; i < loc1.length; i++) if (loc1.eq(i)[0].hash !== "") {
+                    allMenu.push(loc1.eq(i));
+                    allMenuTarget.push($(loc1.eq(i)[0].hash));
+                }
+
+                onScrollHandler();
             }
         </script>
 
@@ -43,7 +93,7 @@
                 <a href="/"><img class="logo" src="./png/logo.png" alt=""></a>
                 <div class="menu-content">
                     <ul class="menu-wrapper">
-                        <li><a href="#home">Home</a></li>
+                        <li class="menu-home"><a href="#home">Home</a></li>
                         <li><a href="#invitation">Invitation</a></li>
                         <li><a href="#greetings">Greetings</a></li>
                     </ul>
@@ -60,7 +110,7 @@
                         <h1>Share the Vite</h1>
                         <h3>The new way to invite</h3>
                     </div>
-                    <div class="home-button button"><a href="/login">MAKE YOUR VITE</a></div>
+                    <div class="home-button button"><a href="#invitation">MAKE YOUR VITE</a></div>
                 </div>
             </div>
         </div>

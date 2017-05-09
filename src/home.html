@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <title>Vite</title>
+        <meta charset="utf-8">
+        <meta name="description" content="The new way to invite">
+        <meta name="keywords" content="invitation, greetings, form, ceremony, meeting, schedule, share">
+        <meta name="authors" content="IMK">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script>
+            window.onload = function () { setup() };
+            
+		    var win = $(window);
+            var menu;
+
+            function setup() {
+                win.on('scroll', onScrollHandler);
+                menu = $('#menu');
+            }
+
+            function onScrollHandler(e) {
+                if (win.scrollTop() > 30) {
+                    menu.addClass('menu-active');
+                } else {
+                    menu.removeClass('menu-active');
+                }
+            }
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="./css/style.css?">
+        <link rel="stylesheet" type="text/css" href="./css/grid.css?">
+    </head>
+
+    <body>
+        <div id="menu" class="menu-inactive">
+            <div class="row container menu-wrapper">
+                <a href="/"><img class="logo" src="./png/logo.png" alt="Vite"></a>
+                <div class="menu-content">
+                    <ul class="menu-wrapper">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#invitation">Invitation</a></li>
+                        <li><a href="#greetings">Greetings</a></li>
+                    </ul>
+                </div>
+                <div class="signin button"><a href="/login">Sign In</a></div>
+            </div>
+        </div>
+
+        <div id="home" class="row">
+            <div class="home-wrapper">
+                <!-- <div class="shadow"/> -->
+                <div class="home-content">
+                    <div class="home-text">
+                        <h1>Share the Vite</h1>
+                        <h3>The new way to invite</h3>
+                    </div>
+                    <div class="home-button button"><a href="/login">MAKE YOUR VITE</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content" class="container">
+            <div id="invitation" class="row">
+                <div class="title-wrapper">
+                    <h1 class="title anim-title">INVITATION</h1>
+                </div>
+
+                <div class="card column-12">
+                    <div class="card-text column-6">
+                        <h1>Title</h1>
+                        <p>Description ...</p>
+                        <div class="button"><a href="#">START NOW</a></div>
+                    </div>
+
+                    <div class="card-img column-6">
+                        <span>image</span>
+                    </div>
+                </div>
+
+                <div class="card column-12">
+                    <div class="card-img column-6">
+                        <span>image</span>
+                    </div>
+
+                    <div class="card-text column-6">
+                        <h1>Title</h1>
+                        <p>Description ...</p>
+                        <div class="button"><a href="#">START NOW</a></div>
+                    </div>
+                </div>
+                <div class="load-button button"><a href="#"><span style="font-size: 20px; margin-right: 13px; font-weight: 100;" class="fa fa-refresh"></span> LOAD MORE</a></div>
+            </div>
+        </div>
+
+        <div id="parallax-middle" class="parallax" style="background-image: url('img/bg-parallax.jpg'); haight: 40%">
+            <div class="shadow"></div>
+            <div class="parallax-style">
+                <h1 class="parallax-h1">
+                    <p class="parallax-title">Share your happiness</p>
+                    <p class="parallax-des">with <strong>Vite Greetings!</strong></p>
+                </h1>
+            </div>
+        </div>
+
+        <div id="content" class="container">
+            <div id="greetings" class="row">
+                <div class="title-wrapper">
+                    <h1 class="title anim-title">GREETINGS</h1>
+                </div>
+
+                <div class="card column-12">
+                    <div class="card-text column-6">
+                        <h1>Title</h1>
+                        <p>Description ...</p>
+                        <div class="button"><a href="#">START NOW</a></div>
+                    </div>
+
+                    <div class="card-img column-6">
+                        <span>image</span>
+                    </div>
+                </div>
+
+                <div class="card column-12">
+                    <div class="card-img column-6">
+                        <span>image</span>
+                    </div>
+
+                    <div class="card-text column-6">
+                        <h1>Title</h1>
+                        <p>Description ...</p>
+                        <div class="button"><a href="#">START NOW</a></div>
+                    </div>
+                </div>
+                <div class="load-button button"><a href="#"><span style="font-size: 20px; margin-right: 13px; font-weight: 100;" class="fa fa-refresh"></span> LOAD MORE</a></div>
+            </div>
+
+            <div id="greetings">
+
+            </div>
+        </div>
+
+        <div id="footer">
+            <div class="footer-content" style="color: black;">
+                <div class="container" style="padding-top: 18px; padding-bottom: 7px;">
+                    <p class="footer-left">&copy; Copyright 2017 <a href="#" target="_blank">VITE</a>. All rights reserved </p>
+                    <p class="footer-right">Designed by <a href="#" target="_blank">IMK</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

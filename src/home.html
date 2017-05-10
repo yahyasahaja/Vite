@@ -20,10 +20,12 @@
             var allMenuTarget = [];
             var currentMenu;
             var onTop = true;
+            var logo;
 
             function setup() {
                 win.on('scroll', onScrollHandler);
                 menu = $('#menu');
+                logo = $('.logo');
                 currentMenu = $('.menu-home');
 
                 setupScrollMenu();
@@ -35,7 +37,7 @@
                 
                 if (win.scrollTop() > 30) {
                     menu.addClass('menu-active');
-                    menu.removeClass('menu-inactive')
+                    menu.removeClass('menu-inactive');
                     onTop = false;
                 } else {
                     menu.removeClass('menu-active');
@@ -90,7 +92,12 @@
     <body>
         <div id="menu" class="menu-inactive">
             <div class="row container menu-wrapper">
-                <a href="/"><img class="logo" src="./png/logo.png" alt=""></a>
+                <div class="logo-wrapper">
+                    <a href="/">
+                        <img class="logo-white" src="./img/logo-putih-2.png" alt="" width="70px">
+                        <img class="logo-blue" src="./img/logo-biru-2.png" alt="" width="70px">
+                    </a>
+                </div>
                 <div class="menu-content">
                     <ul class="menu-wrapper">
                         <li class="menu-home"><a href="#home">Home</a></li>

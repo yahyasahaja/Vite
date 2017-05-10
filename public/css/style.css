@@ -236,9 +236,32 @@ tr:hover {
     padding: 0;
 }
 
-.logo {
+.logo-wrapper {
+    width: 70px;
+    height: 1px;
+    float: left;
+}
+
+.logo-white, .logo-blue {
     display: block;
     float: left;
+    margin-top: 15px;
+    position: absolute;
+    opacity: 1;
+}
+
+.logo-blue {
+    opacity: 0;
+}
+
+.menu-inactive:hover .logo-blue {
+    opacity: 1;
+    transition: .3s;
+}
+
+.menu-active .logo-blue {
+    opacity: 1;
+    transition: .3s;
 }
 
 .signin {

@@ -19,5 +19,5 @@ app.get('/login', (req, res) => {
 
 app.listen(3000, () => { console.log('server runnning at port 3000'); opn('http://localhost:3000') });
 
-var a = { a: "1", b: "2"};
-Object.keys(a).map((a) => console.log(a));
+// var a = { a: "1", b: "2"};
+// Object.keys(a).map((a) => console.log(a));

@@ -18,7 +18,7 @@ app.get('/login', (req, res) => {
     res.sendFile(__dirname + '/src/login.html');
 });
 
-app.listen(port, () => { console.log(`server runnning at port ${port}`); opn('http://localhost:3000') });
+//app.listen(port, () => { console.log(`server runnning at port ${port}`); opn('http://localhost:3000') });
 
-// var a = { a: "1", b: "2"};
-// Object.keys(a).map((a) => console.log(a));
+x = -.5;
+console.log(.25 * x * x * x * x + .5 * x * x + 2 * x * x * x / 3 + 2 * x);

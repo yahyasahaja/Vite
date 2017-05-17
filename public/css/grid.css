@@ -3,7 +3,7 @@ body { margin: 0; }
 .container { width: 100%; max-width: 90%; margin: auto; }
 
 @media only screen and (max-width: 600px) {
-	.container { max-width: 400px; }
+    
 }
 
 .row {

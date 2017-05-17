@@ -2,7 +2,7 @@ body { margin: 0; }
 .container * { box-sizing: border-box; }
 .container { width: 100%; max-width: 90%; margin: auto; }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
 	.container { max-width: 400px; }
 }
 
@@ -11,7 +11,7 @@ body { margin: 0; }
 }
 
 .row:before, .row:after { content: ""; display: table; clear: both; }
-[class*='column-'] { float: left; padding: 12px; }
+[class*='column-'] { padding: 12px; }
 .column-1 { min-width: 8.33%;} 
 .column-2 { min-width: 16.66%;} 
 .column-3 { min-width: 24.99%;} 

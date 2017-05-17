@@ -458,3 +458,62 @@ input, textarea, select, button {
 .footer-left {
 	float: left;
 }
+
+@media only screen and (max-width: 600px) {
+	.button a {
+        padding: 10px 16px;
+        font-size: 10pt;
+    }
+
+    .card .card-text {
+        padding-left: 10px;
+    }
+
+    .title {
+        font-size: 27px;
+    }
+
+    h1.title::after {
+        bottom: 60px;
+    }
+
+    .card-text h1 {
+        font-size: 20pt;
+    }
+
+    .card-text p {
+        font-size: 12pt;
+    }
+
+    .parallax-des {
+        margin-top: -22px;
+        font-size: 16pt;
+    }
+
+    .parallax-title {
+        font-size: 20pt;
+    }
+
+    .footer-right, .footer-left {
+        float: none;
+        text-align: left;
+        font-size: 11pt;
+    }
+
+    .home-content h1 {
+        font-size: 34pt;
+    }
+
+    .home-button a {
+        padding: 15 30px;
+        font-size: 14pt;
+    }
+
+    .menu-content {
+        display: none;
+    }
+
+    .menu-wrapper {
+        min-height: 80px;
+    }
+}

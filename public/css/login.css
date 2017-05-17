@@ -83,3 +83,36 @@ body {
 .text-link:visited {
     color: #009cff;
 }
+
+.logo {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+    .header {
+        font-size: 11pt;
+    }
+
+    .header h1 {
+        font-size: 30pt;
+    }
+
+    input[type="email"], input[type="password"] {
+        width: 90%;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+    }
+
+    .remember {
+        display: none;
+    }
+
+    .logo {
+        top: 25px;
+        left: 25px;
+    }
+}

@@ -4,10 +4,11 @@
 }
 
 html, body {
-	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-family: "Open Sans", "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 	font-size: 1em;
 	line-height: 1.5;
 	height: 100%;
+    font-weight: 100;
 }
 
 body {
@@ -350,6 +351,10 @@ a:visited {
 }
 
 /*    HOME    */
+.home-text {
+    font-family: "century gothic";
+}
+
 .home-wrapper {
     background: url(../img/bg-home-3-update.jpg) no-repeat;
     height: 100%;

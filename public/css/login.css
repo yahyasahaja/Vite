@@ -20,7 +20,7 @@ input[type="checkbox"] {
 
 input {
     margin: 10px 0 10px 0;
-    font-family: "century gothic", Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", "century gothic", Arial, Helvetica, sans-serif;
 }
 
 input[type="email"], input[type="password"] {
@@ -67,7 +67,7 @@ input[type="submit"]:active {
 }
 
 body {
-    font-family: "century gothic", Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", "century gothic", Arial, Helvetica, sans-serif;
     height: 100%;
 }
 
@@ -115,5 +115,9 @@ body {
         position: relative;
         top: 25px;
         left: 25px;
+    }
+
+    .header {
+        margin-top: 80px;
     }
 }

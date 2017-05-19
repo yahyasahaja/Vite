@@ -537,7 +537,7 @@ input, textarea, select, button {
 
     .card-text .button a {
         width: 100%;
-        display: inherit;
+        display: block;
         text-align: center;
     }
 }

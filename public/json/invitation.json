@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Wedding Party",
+        "description": "Make your wedding party invitation and R.S.V.P",
+        "img": "/img/coba.jpg"
+    },
+    {
+        "title": "Birthday Party",
+        "description": "Celebrate your birthday party invitation together with Vite",
+        "img": "/img/birthday.png"
+    },
+    {
+        "title": "Workshop",
+        "description": "The new performance workshop attendance, make easier with Vite",
+        "img": "/img/workshop.png"
+    }
+]

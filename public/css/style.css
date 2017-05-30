@@ -408,10 +408,14 @@ a:visited {
 }
 
 /*    CONTENT    */
+div .card {
+    padding-top: 50px;
+    padding-bottom: 30px;
+
+}
 
 .card {
-    margin-top: 50px;
-    margin-bottom: 30px;
+    transition: .5s;
 }
 
 .card .card-text {
@@ -419,13 +423,14 @@ a:visited {
 }
 
 .card-img {
-    border: grey dashed 2px;
-    border-radius: 20px;
-    min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: .4;
+}
+
+.card-img img {
+    max-width: 100%;
+    border-radius: 30px;
 }
 
 .load-button {
@@ -464,6 +469,26 @@ input, textarea, select, button {
 	float: left;
 }
 
+@media only screen and (min-width: 640px) {
+    .card:hover img {
+        transition: .3s ease-out;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .card img {
+        transform: scale(.95);
+        opacity: .5;
+        transition: .3s;
+    }
+
+    .card:hover {
+        background: #f2ffff;
+        border-radius: 20px;
+        transition: .5s;
+    }
+}
+
 @media only screen and (max-width: 640px) {
     .home-wrapper {
         height: 600px;
@@ -487,11 +512,11 @@ input, textarea, select, button {
     }
 
     .card-text h1 {
-        font-size: 20pt;
+        font-size: 16pt;
     }
 
     .card-text p {
-        font-size: 12pt;
+        font-size: 10pt;
     }
 
     .parallax-des {
@@ -527,7 +552,7 @@ input, textarea, select, button {
     }
 
     .card {
-        box-shadow: 0px 0px 11px -8px;
+        box-shadow: 0px 9px 8px -11px;
     }
 }
 

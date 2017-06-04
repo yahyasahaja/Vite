@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vite Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="/css/register.css" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <a href=".." class="logo">
+            <img class="logo-blue" src="./img/logo-biru-2.png" alt="" width="70px">
+        </a>
+        <div class="row header">
+            <h1>Register</h1>
+            <p>Already have an account? Please <a href="/login" class="text-link">Login</a></p>
+        </div>
+        
+        <div class="row login-form" onsubmit="return onSubmit()">
+            <form id="form" method="POST">
+                <input id="name" type="text" name="name" placeholder="Name">
+                <input id="email" type="email" name="email" placeholder="Email">
+                <input id="password" type="password" name="password" placeholder="Password">
+                <input id="password-2" type="password" name="password2" placeholder="Re-type Password">
+                <p class="password-match">Password not match</p>
+                <button id="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/js/register.js"></script>
+</body>
+
+</html>

@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <a href=".." class="logo">
-            <img class="logo-blue" src="./img/logo-biru-2.png" alt="" width="70px">
+            <img class="logo-blue" src="/img/logo-biru-2.png" alt="" width="70px">
         </a>
         <div class="row header">
             <h1>Register</h1>
@@ -19,7 +19,7 @@
         </div>
         
         <div class="row login-form" onsubmit="return onSubmit()">
-            <form id="form" method="POST">
+            <form id="form" method="POST" action="/auth/register">
                 <input id="name" type="text" name="name" placeholder="Name">
                 <input id="email" type="email" name="email" placeholder="Email">
                 <input id="password" type="password" name="password" placeholder="Password">

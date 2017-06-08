@@ -29,11 +29,13 @@ function getContentData() {
     $.get('/json/invitation.json', function(res) {
         inivtationData = res;
         for (var i in res) contentInvitation.append(addData(res[i], i));
+        $('#anim-invitation').css('display', 'none');
     });
 
     $.get('/json/greetings.json', function(res) {
         greetingsData = res;
         for (var i in res) contentGreetings.append(addData(res[i], i));
+        $('#anim-greetings').css('display', 'none');
     });
 }
 
@@ -61,6 +63,8 @@ function addData(data, i) {
     btn.append(anchor);
     imgContainer.append(img);
 
+    container.css('animation-delay', i * .3 + 's');
+    container.addClass('card-anim');
     container.addClass('card');
     container.addClass('column-12');
     if (i % 2 == 0) container.addClass('content-ganjil');

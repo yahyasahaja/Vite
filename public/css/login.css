@@ -19,7 +19,7 @@ input[type="checkbox"] {
 }
 
 input {
-    margin: 10px 0 10px 0;
+    margin: 10px 0 0 0;
     font-family: "Open Sans", "century gothic", Arial, Helvetica, sans-serif;
 }
 
@@ -36,6 +36,7 @@ input[type="email"], input[type="password"] {
 input[type="email"]:focus, input[type="password"]:focus {
     border: none;
     border-bottom: #009cff solid 2px;
+    margin-bottom: -1px;
 }
 
 input[type="submit"] {
@@ -45,7 +46,7 @@ input[type="submit"] {
     transition: .3s;
     color: #009cff;
     background: none;
-    margin-top: 20px;
+    margin-top: 30px;
     font-size: 15pt;
     cursor: pointer;
 }

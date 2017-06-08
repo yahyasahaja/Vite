@@ -4,28 +4,36 @@ const ejs = require('ejs');
 const opn = require('opn');
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+const { url } = require('./config/database');
+
+mongoose.Promise = global.Promise;
+mongoose.connect(url);
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing
+app.use(cookieParser());
 
 app.set('view-engine', 'ejs');
 
 app.use(express.static('./public'));
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/src/home.html');
+const secure = express.Router();
+const auth = express.Router();
+require('./app/router/general.js')(app);
+require('./app/router/secure.js')(secure);
+require('./app/router/auth.js')(auth);
+
+app.use('/user', secure);
+app.use('/auth', auth);
+
+app.get('/coba', (req, res) => {
+    res.sendFile(__dirname + '/src/coba.html');
 });
 
-app.get('/login', (req, res) => {
-    res.sendFile(__dirname + '/src/login.html');
+app.get('/coba2', (req, res) => {
+    res.send(`<h1>${req.header('Host')} ${req.header('aaa')}</h1>`);
 });
-
-app.get('/register', (req, res) => {
-    res.sendFile(__dirname + '/src/register.html');
-});
-
-app.post('/register', (req, res) => {
-    res.json(req.body);
-})
 
 app.listen(port, () => { console.log(`server runnning at port ${port}`); opn('http://localhost:3000') });

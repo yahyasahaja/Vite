@@ -1,0 +1,101 @@
+const mongodb = require('mongodb');
+const mongoose = require('mongoose');
+const validator = require('validator');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+const UserSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true,
+        minlength: 7,
+        validate: {
+            validator: email => validator.isEmail(email),
+            message: '{VALUE} is not a valid email'
+        }
+    },
+    password: {
+        type: String,
+        minlength: 6,
+        required: true
+    },
+    tokens: [{
+        access: {
+            type: String,
+            required: true
+        },
+        token: {
+            type: String,
+            required: true
+        }
+    }]
+});
+
+UserSchema.pre('save', function(next) {
+    var user = this;
+
+    if (!user.isModified('password')) return next();
+
+    bcrypt.genSalt((err, salt) => {
+        bcrypt.hash(user.password, salt, (err, hashed) => {
+            user.password = hashed;
+            next();
+        });
+    });
+});
+
+UserSchema.methods.generateAuthToken = function () {
+    const user = this;
+    const access = 'auth';
+    const token = jwt.sign({ id: user._id.toHexString() }, 'vite').toString();
+
+    user.tokens.push({ token, access });
+
+    return user.save().then(() => token);
+};
+
+UserSchema.methods.logout = function(token) {
+    for (var data in this.tokens) if (this.tokens[data].token === token) {
+        this.tokens.splice(data, 1);
+        break;
+    }
+
+    return this.save();
+};
+
+UserSchema.statics.findByCredentials = function ({ email, password }) {
+    const User = this;
+
+    return User.findOne({email}).then(user => {
+        if (!user) return Promise.reject('User not found');
+        
+        return new Promise((resolve, reject) => {
+            bcrypt.compare(password, user.password, (err, res) => {
+                if (res) resolve(user);
+                else reject('Password is not match');
+            });
+        });
+    });
+};
+
+UserSchema.statics.findByToken = function (token) {
+    var User = this;
+    var id; 
+    var apa;
+
+    try {
+        id = (apa = jwt.verify(token, 'vite')).id;
+    } catch (e) {
+        return Promise.reject('Token is not valid');
+    }
+    
+    return User.findOne({ _id: id, 'tokens.token': token, 'tokens.access': 'auth' });
+};
+
+module.exports = mongoose.model('viteusers', UserSchema);

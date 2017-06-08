@@ -117,13 +117,52 @@ h1.title::after {
     margin-top: -40px;
 }
 
-@media only screen and (max-device-width: 400px) {
-	.parallax {
-		background-attachment: scroll;
-	}
+#anim-greetings, #anim-invitation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*    ANIM    */
+.card-anim {
+	animation-name: anim3;
+	animation-duration: .5s;
+	animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes anim3 {
+    0% {
+        bottom: -100px;
+        opacity: 0;
+    }
+
+    100% {
+        bottom: 0px;
+        opacity: 1;
+    }
+}
+
+.anim-loading2 {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border-radius: 50%;
+    border: solid #d4d4d4 4px;
+    border-top: solid #009cff 4px;
+    border-bottom: solid #009cff 4px;
+	animation-name: anim2;
+	animation-duration: .7s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes anim2 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .anim-loading {
 	width: 20px;
 	height: 20px;
@@ -411,10 +450,11 @@ a:visited {
 div .card {
     padding-top: 50px;
     padding-bottom: 30px;
-
 }
 
 .card {
+    position: relative;
+    opacity: 0;
     transition: .5s;
 }
 

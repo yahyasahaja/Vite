@@ -20,7 +20,15 @@ module.exports = function (router) {
         });
     });
 
+    app.get('/birthday', (req, res) => {
+        res.sendFile(path.join(__dirname, '../../src/birthday.html'));
+    });
+
     app.get('/profile', (req, res) => {
         res.send(`<h1>Profile</h1><p>Hi ${req.user.name}! Welcome to your profile page!</p><div><a href="/auth/logout">Log Out</a></div>`);
-    })
+    });
+
+    app.get('/vitelist', (req, res) => {
+        res.sendFile(path.join(__dirname, '../../src/vitelist.html'));
+    });
 };

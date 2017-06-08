@@ -2,16 +2,19 @@
     {
         "title": "Idul Fitri",
         "description": "Make your wedding party invitation and R.S.V.P",
-        "img": "/img/idul-fitri.png"
+        "img": "/img/idul-fitri.png",
+        "link": "/user/new/idul-fitri"
     },
     {
         "title": "Christmas",
         "description": "Make your wedding party invitation and R.S.V.P",
-        "img": "/img/christmas.png"
+        "img": "/img/christmas.png",
+        "link": "/user/new/christmas"
     },
     {
         "title": "Imlek Gong Xi Fa Cai",
         "description": "Make your wedding party invitation and R.S.V.P",
-        "img": "/img/imlek.jpg"
+        "img": "/img/imlek.jpg",
+        "link": "/user/new/imlek"
     }
 ]

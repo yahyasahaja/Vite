@@ -43,6 +43,7 @@ input[type="email"], input[type="password"], input[type="text"] {
     font-size: 15pt;
     outline: none;
 }
+
 input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
     border: none;
     border-bottom: #009cff solid 2px;

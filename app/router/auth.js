@@ -14,7 +14,7 @@ module.exports = function (router) {
         user.password = password;
         
         user.generateAuthToken().then(token => {
-            res.cookie('vitelogintoken', token, { maxAge: 1000 * 60 * 60 * 24 * 30 }).redirect('/user/profile');
+            res.cookie('vitelogintoken', token, { maxAge: 1000 * 60 * 60 * 24 * 30 }).redirect('/');
         }).catch(err => res.send(err));
     });
 
@@ -25,7 +25,7 @@ module.exports = function (router) {
             if (!user) return Promise.reject('User not found');
             return user.generateAuthToken();
         }).then(token => {
-            res.cookie('vitelogintoken', token, { maxAge: 1000 * 60 * 60 * 24 * 30 }).redirect('/user/profile');
+            res.cookie('vitelogintoken', token, { maxAge: 1000 * 60 * 60 * 24 * 30 }).redirect('/');
         }).catch(err => res.send(err));
     });
 

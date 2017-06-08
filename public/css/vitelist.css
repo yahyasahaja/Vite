@@ -1,0 +1,659 @@
+/*	  SETUP    */
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	font-family: "Open Sans", "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 1em;
+	line-height: 1.5;
+	height: 100%;
+    font-weight: 100;
+}
+
+body {
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+.container {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+/*    DEFAULT    */
+::-moz-selection { /* Code for Firefox */
+	color: #0070CC;
+	background: none;
+}
+
+::selection {
+	color: #0070CC;
+	background: none;
+}
+
+.content {
+    margin-top: 50px;
+}
+
+h1 {
+    font-weight: 100;
+}
+
+.title-wrapper {
+	width: 100%;
+	display: block;
+	position: relative;
+	text-align: center;
+    padding-bottom: 50px;
+}
+
+.title {
+	color: black;
+	display: inline-block;
+	padding: 0 2% 15px;
+	border-bottom: 2px solid black;
+	font-weight: bold;
+}
+
+h1.title::after {
+	content: "";
+	width: 50px;
+	height: 15px;
+	position: absolute;
+	border-top: 1px dotted #3F3F3F;
+	border-bottom: 2px solid #3F3F3F;
+	bottom: 65px;
+	left: 50%;
+	margin-left: -25px;
+}
+
+.shadow {
+    width: 100%;
+    background: black;
+    height: 100%;
+    opacity: .8;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/*    PARALLAX    */
+.parallax {
+	/*    Require : background-image and height(%) inside element attribute    */
+	background-attachment: fixed;
+	background-color: #ffffff;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#parallax-middle {
+    position: relative;
+}
+
+.parallax-style {
+	min-height: 250px;
+	padding-bottom: 80px;
+    position: relative;
+}
+
+.parallax-h1 {
+	text-align: center;
+	color: white;
+	padding-top: 80px;
+}
+
+.parallax-title {
+	font-size: 35pt;
+    text-transform: uppercase;
+    border-bottom: white dashed 2px;
+    display: inline-block;
+}
+
+.parallax-des {
+    margin-top: -40px;
+}
+
+#anim-greetings, #anim-invitation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*    ANIM    */
+.card-anim {
+	animation-name: anim3;
+	animation-duration: .5s;
+	animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes anim3 {
+    0% {
+        bottom: -100px;
+        opacity: 0;
+    }
+
+    100% {
+        bottom: 0px;
+        opacity: 1;
+    }
+}
+
+.anim-loading2 {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border-radius: 50%;
+    border: solid #d4d4d4 4px;
+    border-top: solid #009cff 4px;
+	animation-name: anim2;
+	animation-duration: .6s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes anim2 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.anim-loading {
+	width: 20px;
+	height: 20px;
+	position: relative;
+}
+
+.anim-loading::before, .anim-loading::after {
+	content: "";
+	opacity: 0;
+	width: 20px;
+	height: 20px;
+	background-color: red;
+	position: absolute;
+	animation-name: anim1;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	border-radius: 11px;
+}
+
+.anim-loading::after {
+	animation-delay: .8s;
+}
+
+@keyframes anim1 {
+	0%   {background-color:#009cff; left:50%; top:0%;opacity: 0;}
+	25%  {background-color:#009cff; left:100%; top:50%;opacity: 1;}
+	50%  {background-color:#009cff; left:50%; top:100%;}
+	75%  {background-color:#00577a; left:0%; top:50%;}
+	100% {background-color:#009cff; left:50%; top:0%;opacity: 0;}
+}
+
+/*    TABLE    */
+table, td, th {
+	border-collapse: collapse;
+	border : none;
+	padding: 10px;
+}
+
+table {
+	width: 100%;
+	overflow-x: auto;
+	border: 1px solid #5f5f5f;
+}
+
+th {
+	background-color: #5f5f5f;
+	color: #ffffff;
+	font-weight: bold;
+	text-align: left;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:hover {
+	background-color: #dbdbdb;
+}
+
+/*    MENU    */
+#menu {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    max-height: 85px;
+}
+
+.menu-inactive {
+    background-color: rgba(255, 255, 255, 1);
+    transition: .3s;
+}
+
+#menu:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transition: .3s;
+}
+
+.menu-active {
+    background-color: rgba(255, 255, 255, .8);
+    box-shadow: black 0px 0px 20px -7px;
+    transition: .3s;
+}
+
+.menu-wrapper {
+    width: 100%;
+    height: 100%;
+    transition: .3s;
+    margin: auto;
+    padding: 0;
+}
+
+.logo-wrapper {
+    width: 70px;
+    height: 1px;
+    float: left;
+}
+
+.logo-white, .logo-blue {
+    display: block;
+    float: left;
+    margin-top: 15px;
+    position: absolute;
+    opacity: 1;
+}
+
+.logo-blue {
+    opacity: 1;
+}
+
+.menu-active .logo-blue {
+    opacity: 1;
+    transition: .3s;
+}
+
+.signin {
+    float: right;
+}
+
+.button {
+    margin-top: 30px;
+}
+
+.button a {
+    padding: 10px 25px;
+    border: black solid 1px;
+    border-radius: 50px;
+    transition: .3s;
+}
+
+.button a:hover {    
+    background: #009cff;
+    border-color: #009cff;
+    transition: .3s;
+    color: white;
+    text-decoration: none;
+}
+
+.button a:active {
+    background: rgb(4, 86, 95);
+    border-color: rgb(4, 86, 95);
+    transition: 0s;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-content {
+    float: left;
+    margin-left: 20px;
+}
+
+.menu-content ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+    float: left;
+}
+
+.menu-content li {
+    display: block;
+    float: left;
+    border-top: rgba(10, 212, 234, 0) solid 4px;
+    transition: .3s;
+}
+
+.menu-content .menu-actived {
+    border-top: rgb(10, 212, 234) solid 4px;
+    transition: .3s;
+}
+
+.menu-content li a {
+    padding: 20px;
+    padding-top: 30px;
+    padding-bottom: 27px;
+    display: inline-block;
+}
+
+.menu-content li:hover {
+    border-top: rgba(10, 212, 234, 1) solid 4px;
+    transition: .3s;
+}
+
+.menu-wrapper a:hover {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover { 
+    text-decoration: underline; 
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+/*    CONTENT    */
+div .card {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+.card {
+    position: relative;
+    opacity: 0;
+    transition: .5s;
+}
+
+.card .card-text {
+    padding-left: 50px;
+}
+
+.card-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img img {
+    max-width: 100%;
+    border-radius: 30px;
+}
+
+.load-button {
+    text-align: center;
+    margin-top: 50px;
+}
+
+input, textarea, select, button {
+    font-family: "century gothic", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+/*      Footer      */
+#footer {
+    box-shadow: black 0 0 30px -7px;
+}
+
+.footer-content {
+    position: relative;
+}
+
+.footer-content a {
+	font-weight: bold;
+	color: #000000;
+}
+
+.footer-content a:hover {
+	color: #666666;
+}
+
+.footer-right {
+	text-align: right;
+}
+
+.footer-left {
+	float: left;
+}
+
+/*    ITEM    */
+.content-invitation, .content-greetings {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.item-container {
+    min-width: 300px;
+    max-width: 500px;
+    flex: 1;
+    margin: 12px;
+    border-radius: 11px;
+    box-shadow: 0 0 18px -8px;
+    overflow: hidden;
+}
+
+.item-container:hover .item-edit-button {
+    opacity: 1;
+    transition: .3s;
+}
+
+.item-up-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.item-img {
+    background-image: url(/img/idul-fitri.png);
+    min-height: 220px;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+
+.item-edit-button {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    transition: .3s;
+}
+
+.item-edit-button a {
+    background-color: rgba(0, 0, 0, .7);
+    min-height: 220px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 11px 10px 0 0;
+}
+
+.item-edit-button span {
+    color: white;
+    font-size: 50pt;
+}
+
+.item-container:hover .item-bottom-container {
+    background: #34b0ff;
+    transition: .3s;
+}
+
+.item-container:hover .item-bottom-container h1, .item-container:hover .item-bottom-container p {
+    color: white;
+    transition: .3s;
+}
+
+.item-bottom-container p {
+    text-align: center;
+    margin: 0;
+    font-size: 10pt;
+    color: #01ace0;
+    transition: .3s;
+}
+
+.item-bottom-container h1 {
+    text-align: center;
+    font-size: 17pt;
+    margin: 0;
+    transition: .3s;
+}
+
+.item-middle-container {
+    text-align: center;
+    border-bottom: #d0d0d0 solid 1px;
+}
+
+.icon {
+    display: inline-block;
+    font-size: 15pt;
+    padding: 16px;
+    color: #545454;
+    width: 50px;
+}
+
+.facebook:hover {
+    color: white;
+    background: #2a8ee0;
+    transition: .3s;
+}
+
+.twitter:hover {
+    color: white;
+    background: #4ddcd0;
+    transition: .3s;
+}
+
+.instagram:hover {
+    color: white;
+    background: #ff6294;
+    transition: .3s;
+}
+
+.item-container:hover .item-middle-container {
+    border-bottom: rgba(255, 255, 255, 0) solid 1px;
+    transition: .3s;
+}
+
+.item-bottom-container {
+    padding: 10px;
+    transition: .3s;
+}
+
+@media only screen and (min-width: 640px) {
+    .card:hover img {
+        transition: .3s ease-out;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .card img {
+        transform: scale(.95);
+        opacity: .5;
+        transition: .3s;
+    }
+
+    .card:hover {
+        background: #f2ffff;
+        border-radius: 20px;
+        transition: .5s;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .home-wrapper {
+        height: 600px;
+    }
+
+	.button a {
+        padding: 10px 16px;
+        font-size: 10pt;
+    }
+
+    .card .card-text {
+        padding-left: 10px;
+    }
+
+    .title {
+        font-size: 27px;
+    }
+
+    h1.title::after {
+        bottom: 60px;
+    }
+
+    .card-text h1 {
+        font-size: 16pt;
+    }
+
+    .card-text p {
+        font-size: 10pt;
+    }
+
+    .parallax-des {
+        margin-top: -22px;
+        font-size: 16pt;
+    }
+
+    .parallax-title {
+        font-size: 20pt;
+    }
+
+    .footer-right, .footer-left {
+        float: none;
+        text-align: left;
+        font-size: 11pt;
+    }
+
+    .home-content h1 {
+        font-size: 34pt;
+    }
+
+    .home-button a {
+        padding: 15 30px;
+        font-size: 14pt;
+    }
+
+    .menu-content {
+        display: none;
+    }
+
+    .menu-wrapper {
+        min-height: 80px;
+    }
+
+    .card {
+        box-shadow: 0px 9px 8px -11px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .card-text .button {
+        width: 100%;
+    }
+
+    .card-text .button a {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    .content-ganjil {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}

@@ -75,7 +75,7 @@ function addData(data, i) {
     textContainer.addClass('column-6-s');
 
     btn.addClass('button');
-    anchor.attr('href', '#');
+    anchor.attr('href', data.link);
     anchor.text('START NOW');
 
     imgContainer.addClass('card-img');

@@ -151,9 +151,8 @@ h1.title::after {
     border-radius: 50%;
     border: solid #d4d4d4 4px;
     border-top: solid #009cff 4px;
-    border-bottom: solid #009cff 4px;
 	animation-name: anim2;
-	animation-duration: .7s;
+	animation-duration: .6s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 }

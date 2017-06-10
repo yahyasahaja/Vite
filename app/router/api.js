@@ -24,7 +24,7 @@ module.exports = function (router) {
             for (var i = 0; i < data.length; i++) {
                 if (linksource != link && data[i].link == link) throw new Error('Link already exist');
                 if (data[i].link == link) {
-                    data[i] = { link, groom, bride, name, location, date };
+                    data[i] = { link, groom, bride, name, location, date: new Date(date)};
                     exist = true;
                     break;
                 }

@@ -24,7 +24,7 @@
         <div class="card-text">
             <div>
                 <h1><%= data.name %></h1>
-                <p><%= (data.date.getMonth() + 1) + "/" + data.date.getDate() + "/" + data.date.getFullYear() %></p>
+                <p><%= data.date.getFullYear() + "/" + (data.date.getMonth() + 1) + "/" + data.date.getDate() %></p>
                 <p><%= data.location %></p>
             </div>
         </div>

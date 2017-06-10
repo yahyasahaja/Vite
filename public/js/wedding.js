@@ -57,7 +57,8 @@ function setContent() {
             $('#name').val(data.name);
             $('#groom').val(data.groom);
             $('#bride').val(data.bride);
-            $('#date').val((new Date(data.date)).toISOString().slice(0,10).replace(/-/g,"/"));
+            var date = new Date(data.date);
+            $('#date').val(date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate());
             $('#location').val(data.location);
             $('#link').val(data.link);
             $('#view-button').attr('href', window.location.origin + '/view/' +  userData.username + '/' + data.link);

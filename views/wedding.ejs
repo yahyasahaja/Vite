@@ -4,6 +4,8 @@
 <head>
     <title>invitation</title>
     <link rel="stylesheet" href="/css/wedding-result.css" type="text/css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 </head>
 
 <body>
@@ -22,7 +24,7 @@
         <div class="card-text">
             <div>
                 <h1><%= data.name %></h1>
-                <p><%= data.date.getMonth() + "/" + data.date.getDate() + "/" + data.date.getFullYear() %></p>
+                <p><%= (data.date.getMonth() + 1) + "/" + data.date.getDate() + "/" + data.date.getFullYear() %></p>
                 <p><%= data.location %></p>
             </div>
         </div>

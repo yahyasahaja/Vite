@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/wedding.css?" type="text/css">
     <link rel="stylesheet" type="text/css" href="/css/grid.css?">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 </head>
 
 <body>
@@ -38,21 +41,41 @@
             <h1 class="title anim-title">WEDDING PARTY</h1>
         </div>
 
-        <div class="form-container">
-            <form action="/api/newvite" method="POST">
+        <div class="form-container" ng-app="">
+            <div class="card">
+                <div class="card-img">
+                    <div class="card-img-nes">
+                        <div>
+                            <h1>Wedding Party</h1>
+                            <p>{{groom}}</p>
+                            <p>&</p>
+                            <p>{{bride}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-text">
+                    <div>
+                        <h1>{{name}}</h1>
+                        <p>{{date}}</p>
+                        <p>{{location}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="form-edit" action="/api/newvite" method="POST">
                 <input type="hidden" name="type" value="invitation">
                 <input type="hidden" name="subtype" value="wedding">
                 <input id="linksource" type="hidden" name="linksource" value="">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter name for this event">
+                <input type="text" id="name" name="name" ng-model="name" placeholder="Enter name for this event">
                 <label for="groom">Groom</label>
-                <input type="text" id="groom" name="groom" placeholder="Enter groom name">
+                <input type="text" id="groom" name="groom" ng-model="groom" placeholder="Enter groom name">
                 <label for="bride">Bride</label>
-                <input type="text" id="bride" name="bride" placeholder="Enter bride name">
+                <input type="text" id="bride" name="bride" ng-model="bride" placeholder="Enter bride name">
                 <label for="date">Date</label>
-                <input type="text" id="date" name="date" placeholder="YYYY/MM/DD">
+                <input type="text" id="date" name="date" ng-model="date" placeholder="YYYY/MM/DD">
                 <label for="location">Location</label>
-                <input type="text" id="location" name="location" placeholder="Enter the location take place">
+                <input type="text" id="location" name="location" ng-model="location" placeholder="Enter the location take place">
                 
                 <div>
                     <label for="link">Link<br>

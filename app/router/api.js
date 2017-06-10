@@ -7,6 +7,7 @@ module.exports = function (router) {
     app = router ? router : app;
 
     app.get('/userdata', authenticate, (req, res) => {
+        if (!req.user) return res.status(401).send('No token found');
         var { name, username, email } = req.user;
         res.json({ name, username, email });
     });
@@ -41,7 +42,7 @@ module.exports = function (router) {
 };
 
 function authenticate (req, res, next) {
-    if (!req.cookies.vitelogintoken) return res.redirect('/login');
+    if (!req.cookies.vitelogintoken) return next();
     
     User.findByToken(req.cookies.vitelogintoken).then(user => {
         if (!user) return Promise.reject('No user found with that token');

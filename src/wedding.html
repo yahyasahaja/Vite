@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wedding Party</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/wedding.css?" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/css/grid.css?">
+</head>
+
+<body>
+    <div id="menu" class="menu-active">
+        <div class="row container menu-wrapper">
+            <div class="logo-wrapper">
+                <a href="/">
+                    <img class="logo-blue" src="/img/logo-biru-2.png" alt="" width="70px">
+                </a>
+            </div>
+            <div class="menu-content">
+                <ul class="menu-wrapper"></ul>
+            </div>
+            <div id="user-menu" class="user-menu-container">
+                <div class="user-menu-pic">
+                    <img src="/img/profile-pic.jpg" alt="" width="50" height="50">
+                </div>
+                <div class="user-menu-content">
+                    <h1 id="user-name" class="user-menu-name">Hi, Luna!</h1>
+                    <a class="user-menu-button" href="/user/profile">Profile</a>
+                    <a class="user-menu-button" href="/">New Vite</a>
+                    <a class="user-menu-button" href="/user/vitelist">Vite List</a>
+                    <a class="user-menu-button" href="/auth/logout">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="title-wrapper">
+            <h1 class="title anim-title">WEDDING PARTY</h1>
+        </div>
+
+        <div class="form-container">
+            <form action="/api/newvite" method="POST">
+                <input type="hidden" name="type" value="invitation">
+                <input type="hidden" name="subtype" value="wedding">
+                <input id="linksource" type="hidden" name="linksource" value="">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter name for this event">
+                <label for="groom">Groom</label>
+                <input type="text" id="groom" name="groom" placeholder="Enter groom name">
+                <label for="bride">Bride</label>
+                <input type="text" id="bride" name="bride" placeholder="Enter bride name">
+                <label for="date">Date</label>
+                <input type="text" id="date" name="date" placeholder="YYYY/MM/DD">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="Enter the location take place">
+                
+                <div>
+                    <label for="link">Link<br>
+                        <div class="link-container">
+                            <span id="link-text">http://www.vite.com/yahyasahaja/</span>
+                            <input type="text" id="link" name="link" placeholder="Enter link for publish">
+                        </div>
+                    </label>
+                </div>
+                <button id="save-button">Save</button>
+                <a href="javascript:0" target="_blank" id="view-button">View Page</a>
+            </form>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="footer-content" style="color: black;">
+            <div class="container" style="padding-top: 18px; padding-bottom: 7px;">
+                <p class="footer-left">&copy; Copyright 2017 <a href="#" target="_blank">VITE</a>. All rights reserved </p>
+                <p class="footer-right">Designed by <a href="#" target="_blank">IMK</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="/js/wedding.js"></script>
+</body>
+</html>

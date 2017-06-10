@@ -23,6 +23,29 @@ function setup() {
     
     //getContentData();
     setupScrollMenu();
+    checkForUser();
+    getContentData();
+}
+
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+function checkForUser() {
+    $.ajax({
+        type: "GET",
+        url: window.location.origin + "/api/userdata",
+        error: function() {
+            $('#info').html('<p>An error has occurred</p>');
+        },
+        success: function(data) {
+            $('#user-menu').css('display', 'block');
+            $('#signin-button').css('display', 'none');
+            $('#user-name').html("Hi, " + data.name + "!");
+        }
+    });
 }
 
 function getParameterByName(name, url) {
@@ -36,67 +59,86 @@ function getParameterByName(name, url) {
 }
 
 function getContentData() {
-    $.get('/json/invitation.json', function(res) {
+    $.get('/api/vitelist', function(res) {
         inivtationData = res;
-        for (var i in res) contentInvitation.append(addData(res[i], i));
+        for (var i in res.invitation) 
+        for (var j in res.invitation[i]) 
+        contentInvitation.append(addData(res.invitation[i][j], j, 'wedding'));
+        
         $('#anim-invitation').css('display', 'none');
     });
 
-    $.get('/json/greetings.json', function(res) {
-        greetingsData = res;
-        for (var i in res) contentGreetings.append(addData(res[i], i));
-        $('#anim-greetings').css('display', 'none');
-    });
+    // $.get('/json/greetings.json', function(res) {
+    //     greetingsData = res;
+    //     for (var i in res) contentGreetings.append(addData(res[i], i));
+    //     $('#anim-greetings').css('display', 'none');
+    // });
 }
 
-function addData(data, i) {
+function addData(data, i, type) {
     var container = $('<div></div>');
-    var textContainer = $('<div></div>');
-    var imgContainer = $('<div></div>');
-    var title = $('<h1></h1>');
-    var des = $('<p></p>');
-    var btn = $('<div></div>');
-    var anchor = $('<a></a>');
-    var img = $('<img></img>');
-    
-    if (i % 2 == 0) {
-        container.append(textContainer);
-        container.append(imgContainer);
-    } else {
-        container.append(imgContainer);
-        container.append(textContainer);
-    }
-    
-    textContainer.append(title);
-    textContainer.append(des);
-    textContainer.append(btn);
-    btn.append(anchor);
-    imgContainer.append(img);
+    var top = $('<div></div>');
+    var middle = $('<div></div>');
+    var bottom = $('<div></div>');
+    var img = $('<div></div>');
+    var editBtn = $('<div></div>');
+    var editAnchor = $('<a></a>');
+    var editSpan = $('<span></span>');
+    var facebook = $('<a></a>');
+    var twitter = $('<a></a>');
+    var instagram = $('<a></a>');
+    var facebookSpan = $('<span></span>');
+    var twitterSpan = $('<span></span>');
+    var instagramSpan = $('<span></span>');
+    var bottomA = $('<a></a>');
+    var h1 = $('<h1></h1>')
+    var p = $('<p></p>')
 
-    container.css('animation-delay', i * .3 + 's');
-    container.addClass('card-anim');
-    container.addClass('card');
-    container.addClass('column-12');
-    if (i % 2 == 0) container.addClass('content-ganjil');
+    container.append(top);
+    container.append(middle);
+    container.append(bottom);
 
-    textContainer.addClass('card-text');
-    textContainer.addClass('column-12');
-    textContainer.addClass('column-6-m');
-    textContainer.addClass('column-6-s');
+    top.append(img);
+    top.append(editBtn);
+    editBtn.append(editAnchor);
+    editAnchor.append(editSpan);
 
-    btn.addClass('button');
-    anchor.attr('href', '/login');
-    anchor.text('START NOW');
+    middle.append(facebook);
+    middle.append(twitter);
+    middle.append(instagram);
+    facebook.append(facebookSpan);
+    twitter.append(twitterSpan);
+    instagram.append(instagramSpan);
 
-    imgContainer.addClass('card-img');
-    imgContainer.addClass('column-12');
-    imgContainer.addClass('column-6-m');
-    imgContainer.addClass('column-6-s');
+    bottom.append(bottomA);
+    bottomA.append(h1);
+    bottomA.append(p);
 
-    title.text(data.title);
-    des.text(data.description);
-    img.attr('src', data.img);
-    imgContainer.css('padding', 0);
+    container.css('animation-delay', i * .1 + 's');
+    container.addClass('card-anim item-container');
+
+    top.addClass('item-up-container');
+    img.addClass('item-img');
+    editBtn.addClass('item-edit-button');
+    editAnchor.attr('href', `/user/edit/${type}?link=${data.link}`);
+    editSpan.addClass('fa fa-gears');
+
+    middle.addClass('item-middle-container');
+    facebook.attr('href', 'www.facebook.com');
+    twitter.attr('href', 'www.facebook.com');
+    instagram.attr('href', 'www.facebook.com');
+    facebook.addClass('icon facebook');
+    twitter.addClass('icon twitter');
+    instagram.addClass('icon instagram');
+    facebookSpan.addClass('fa fa-facebook');
+    twitterSpan.addClass('fa fa-twitter');
+    instagramSpan.addClass('fa fa-instagram');
+
+    bottom.addClass('item-bottom-container');
+    bottomA.attr('href', `/user/edit/${type}?link=${data.link}`);
+    bottomA.css('text-decoration', 'none');
+    h1.html(data.name);
+    p.html(type == 'wedding' ? 'Wedding' : 'Birthday');
 
     return container;
 }
@@ -132,16 +174,24 @@ function setupScrollMenu() {
     loc1.attr('draggable', false);
     loc1.on('click', function(event) {
         if (this.hash !== "") {
-        event.preventDefault();
-        
-        var hash = this.hash;
+            if (!$(hash)) return;
+            event.preventDefault();
+            
+            var hash = this.hash;
 
-        $('html, body').animate(
-            {scrollTop: $(hash).offset().top - 100}, {duration: 800, easing: "easeOutCirc",
-            complete: function(){
-                window.location.hash = hash;
-                window.scrollTo(window.scrollX, $(hash).offset().top - 100);
-            }});
+            $('html, body').animate(
+                {
+                    scrollTop: $(hash).offset().top - 100
+                }, 
+                {
+                    duration: 800, 
+                    easing: "easeOutCirc",
+                    complete: function(){
+                        window.location.hash = hash;
+                        window.scrollTo(window.scrollX, $(hash).offset().top - 100);
+                    }
+                }
+            );
         }
     });
     

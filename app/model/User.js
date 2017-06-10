@@ -9,6 +9,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     email: {
         type: String,
         unique: true,
@@ -34,7 +39,57 @@ const UserSchema = new mongoose.Schema({
             type: String,
             required: true
         }
-    }]
+    }],
+    vitelist: {
+        invitation: {
+            wedding: [{
+                link: {
+                    type: String,
+                    required: true,
+                },
+                name: {
+                    type: String,
+                    required: true,
+                },
+                groom: {
+                    type: String,
+                    required: true,
+                },
+                bride: {
+                    type: String,
+                    required: true,
+                },
+                date: {
+                    type: Date,
+                    required: true,
+                },
+                location: {
+                    type: String,
+                    required: true,
+                }
+            }]
+        },
+        greetings: {
+            christmas: [{
+                link: {
+                    type: String,
+                    required: true,
+                },
+                name: {
+                    type: String,
+                    required: true,
+                },
+                to: {
+                    type: String,
+                    required: true,
+                },
+                message: {
+                    type: String,
+                    required: true,
+                },
+            }]
+        }
+    }
 });
 
 UserSchema.pre('save', function(next) {
@@ -72,7 +127,7 @@ UserSchema.methods.logout = function(token) {
 UserSchema.statics.findByCredentials = function ({ email, password }) {
     const User = this;
 
-    return User.findOne({email}).then(user => {
+    return User.findOne({ $or: [ { email }, { username: email } ] }).then(user => {
         if (!user) return Promise.reject('User not found');
         
         return new Promise((resolve, reject) => {

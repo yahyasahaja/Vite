@@ -8,10 +8,11 @@ module.exports = function (router) {
 
     app.post('/register', (req, res) => {
         const user = new User();
-        const { name, email, password } = req.body;
+        const { name, email, password, username } = req.body;
         user.name = name;
         user.email = email;
         user.password = password;
+        user.username = username;
         
         user.generateAuthToken().then(token => {
             res.cookie('vitelogintoken', token, { maxAge: 1000 * 60 * 60 * 24 * 30 }).redirect('/');

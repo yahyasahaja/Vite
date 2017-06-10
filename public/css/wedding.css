@@ -1,0 +1,406 @@
+/*	  SETUP    */
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	font-family: "Open Sans", "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 1em;
+	line-height: 1.5;
+    font-weight: 100;
+}
+
+body {
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+.container {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+/*    DEFAULT    */
+::-moz-selection { /* Code for Firefox */
+	color: #0070CC;
+	background: none;
+}
+
+::selection {
+	color: #0070CC;
+	background: none;
+}
+
+.content {
+    margin-top: 50px;
+}
+
+h1 {
+    font-weight: 100;
+}
+
+.title-wrapper {
+	width: 100%;
+	display: block;
+	position: relative;
+	text-align: center;
+    padding-bottom: 50px;
+}
+
+.title {
+	color: black;
+	display: inline-block;
+	padding: 0 2% 15px;
+	border-bottom: 2px solid black;
+	font-weight: bold;
+}
+
+h1.title::after {
+	content: "";
+	width: 50px;
+	height: 15px;
+	position: absolute;
+	border-top: 1px dotted #3F3F3F;
+	border-bottom: 2px solid #3F3F3F;
+	bottom: 65px;
+	left: 50%;
+	margin-left: -25px;
+}
+
+.shadow {
+    width: 100%;
+    background: black;
+    height: 100%;
+    opacity: .8;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/*    OTHER    */
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover { 
+    text-decoration: underline; 
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+/*    FORM   */
+#link {
+    display: inline;
+    max-width: 200px;
+}
+
+#link-text {
+    display: block;
+    color: #0070CC;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+.link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    width: 100%;
+    display: block;
+    margin-top: 12px;
+}
+
+input[type="email"], input[type="password"], input[type="text"] {
+    display: block;
+    padding: 15px;
+    width: 100%;
+    border: #848484 solid 1px;
+    font-size: 11pt;
+    outline: none;
+    border-radius: 10px;
+}
+
+.form-container {
+    margin: auto;
+    margin-top: 30px;
+    max-width: 500px;
+}
+
+button {
+    padding: 10px 70px;
+    border: #009cff solid 1px;
+    border-radius: 50px;
+    transition: .3s;
+    color: #009cff;
+    background: none;
+    margin-top: 30px;
+    font-size: 15pt;
+    cursor: pointer;
+    width: 100%;
+}
+
+#view-button {
+    padding: 10px 70px;   
+    background: #16a77a;
+    transition: .3s;
+    color: white;
+    border-radius: 50px;
+    margin-top: 30px;
+    font-size: 15pt;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+#view-button:hover {
+    background: #08e0a6;
+    transition: .3s;
+}
+
+button:hover {    
+    background: #009cff;
+    border-color: #009cff;
+    transition: .3s;
+    color: white;
+    text-decoration: none;
+}
+
+button:active {
+    background: rgb(4, 86, 95);
+    border-color: rgb(4, 86, 95);
+    transition: 0s;
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+/*    MENU    */
+#menu {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    height: 85px;
+}
+
+.menu-inactive {
+    background-color: rgba(255, 255, 255, 1);
+    transition: .3s;
+}
+
+#menu:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transition: .3s;
+}
+
+.menu-active {
+    background-color: rgba(255, 255, 255, .8);
+    box-shadow: black 0px 0px 20px -7px;
+    transition: .3s;
+}
+
+.menu-wrapper {
+    width: 100%;
+    height: 100%;
+    transition: .3s;
+    margin: auto;
+    padding: 0;
+}
+
+.logo-wrapper {
+    width: 70px;
+    height: 1px;
+    float: left;
+}
+
+.logo-white, .logo-blue {
+    display: block;
+    float: left;
+    margin-top: 15px;
+    position: absolute;
+    opacity: 1;
+}
+
+.logo-blue {
+    opacity: 1;
+}
+
+.menu-active .logo-blue {
+    opacity: 1;
+    transition: .3s;
+}
+
+.signin {
+    float: right;
+}
+
+.button {
+    margin-top: 30px;
+}
+
+.button a {
+    padding: 10px 25px;
+    border: black solid 1px;
+    border-radius: 50px;
+    transition: .3s;
+}
+
+.button a:hover {    
+    background: #009cff;
+    border-color: #009cff;
+    transition: .3s;
+    color: white;
+    text-decoration: none;
+}
+
+.button a:active {
+    background: rgb(4, 86, 95);
+    border-color: rgb(4, 86, 95);
+    transition: 0s;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-content {
+    float: left;
+    margin-left: 20px;
+}
+
+.menu-content ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+    float: left;
+}
+
+.menu-content li {
+    display: block;
+    float: left;
+    border-top: rgba(10, 212, 234, 0) solid 4px;
+    transition: .3s;
+}
+
+.menu-content .menu-actived {
+    border-top: rgb(10, 212, 234) solid 4px;
+    transition: .3s;
+}
+
+.menu-content li a {
+    padding: 20px;
+    padding-top: 30px;
+    padding-bottom: 27px;
+    display: inline-block;
+}
+
+.menu-content li:hover {
+    border-top: rgba(10, 212, 234, 1) solid 4px;
+    transition: .3s;
+}
+
+.menu-wrapper a:hover {
+    text-decoration: none;
+}
+
+/*    USER MENU    */
+.user-menu-container {
+    float: right;
+    margin-top: 17px;
+}
+
+.user-menu-container:hover .user-menu-content {
+    display: block;
+    opacity: 1;
+    transition: .2s;
+}
+
+.user-menu-pic {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50;
+}
+
+.user-menu-pic img {
+    border-radius: 50px;
+}
+
+.user-menu-content {
+    position: absolute;
+    right: 20px;
+    max-width: 300px;
+    min-width: 250px;
+    display: none;
+    opacity: 0;
+    transition: .2s;
+    background: white;
+    box-shadow: 0 0 15px -5px;
+}
+
+.user-menu-name {
+    font-size: 16pt;
+    margin: 15px 24px;
+    border-bottom: #5f5f5f dashed 1px;
+    text-align: center;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.user-menu-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-top: #cacaca dotted 1px;
+    transition: all .2s;
+}
+
+.user-menu-button:hover {
+    background: #009cff;
+    color: white;
+    border-top:rgba(255, 255, 255, 0) dotted 1px;
+    transition: all .2s;
+}
+
+/*      Footer      */
+#footer {
+    box-shadow: black 0 0 30px -7px;
+}
+
+.footer-content {
+    position: relative;
+}
+
+.footer-content a {
+	font-weight: bold;
+	color: #000000;
+}
+
+.footer-content a:hover {
+	color: #666666;
+}
+
+.footer-right {
+	text-align: right;
+}
+
+.footer-left {
+	float: left;
+}

@@ -21,12 +21,15 @@ app.use(express.static('./public'));
 
 const secure = express.Router();
 const auth = express.Router();
+const api = express.Router();
 require('./app/router/general.js')(app);
 require('./app/router/secure.js')(secure);
 require('./app/router/auth.js')(auth);
+require('./app/router/api.js')(api);
 
 app.use('/user', secure);
 app.use('/auth', auth);
+app.use('/api', api);
 
 app.get('/coba', (req, res) => {
     res.sendFile(__dirname + '/src/coba.html');

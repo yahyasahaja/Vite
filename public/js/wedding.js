@@ -12,6 +12,7 @@ var contentInvitation;
 var inivtationData;
 var contentGreetings;
 var greetingsData;
+var userData;
 
 function setup() {
     win.on('scroll', onScrollHandler);
@@ -21,9 +22,47 @@ function setup() {
     contentInvitation = $('.content-invitation');
     contentGreetings = $('.content-greetings');
     
-    getContentData();
+    //getContentData();
     setupScrollMenu();
     checkForUser();
+}
+
+function setContent() {
+    if (window.location.pathname.indexOf('/edit') == -1) {
+        $('#save-button').html('Publish');
+        $('#view-button').css('display', 'none');
+        return;
+    }
+    
+    $('#save-button').html('Save');
+    var link = getParameterByName('link');
+
+    $.ajax({
+        type: "GET",
+        url: window.location.origin + "/api/vitelist",
+        error: function() {
+            $('#info').html('<p>An error has occurred</p>');
+        },
+        success: function(vitelist) {
+            var wedding = vitelist.invitation.wedding;
+            var data;
+
+            for (var i = 0; i < wedding.length; i++) {
+                if (wedding[i].link == link) {
+                    data = wedding[i];
+                }
+            }
+
+            $('#linksource').val(getParameterByName('link'));
+            $('#name').val(data.name);
+            $('#groom').val(data.groom);
+            $('#bride').val(data.bride);
+            $('#date').val((new Date(data.date)).toISOString().slice(0,10).replace(/-/g,"/"));
+            $('#location').val(data.location);
+            $('#link').val(data.link);
+            $('#view-button').attr('href', window.location.origin + '/view/' +  userData.username + '/' + data.link);
+        }
+    });
 }
 
 function getCookie(name) {
@@ -40,11 +79,24 @@ function checkForUser() {
             $('#info').html('<p>An error has occurred</p>');
         },
         success: function(data) {
+            userData = data;
             $('#user-menu').css('display', 'block');
             $('#signin-button').css('display', 'none');
             $('#user-name').html("Hi, " + data.name + "!");
+            $('#link-text').html(window.location.origin + '/view/' +  data.username + '/');
+            setContent();
         }
     });
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
 function getContentData() {
@@ -97,7 +149,7 @@ function addData(data, i) {
     textContainer.addClass('column-6-s');
 
     btn.addClass('button');
-    anchor.attr('href', data.link);
+    anchor.attr('href', '/login');
     anchor.text('START NOW');
 
     imgContainer.addClass('card-img');
@@ -147,7 +199,7 @@ function setupScrollMenu() {
         event.preventDefault();
         
         var hash = this.hash;
-        
+
         $('html, body').animate(
             {scrollTop: $(hash).offset().top - 100}, {duration: 800, easing: "easeOutCirc",
             complete: function(){

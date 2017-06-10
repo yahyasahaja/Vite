@@ -17,6 +17,28 @@ module.exports = function (router) {
     app.get('/register', authenticate, (req, res) => {
          res.sendFile(path.join(__dirname, '../../src/register.html'));
     });
+
+    app.get('/view/:username/:link', (req, res) => {
+        const { username, link } = req.params;
+        
+        User.findOne({ $or: [ 
+            { 'vitelist.greetings.christmas.link': link }, 
+            { 'vitelist.invitation.wedding.link': link }
+        ]}).then(user => {
+            var { christmas } = user.vitelist.greetings;
+            var { wedding } = user.vitelist.invitation;
+
+            for (var i in christmas)  if (christmas[i].link == link) 
+            return res.render('wedding.ejs', { data: christmas[i] });
+            
+            for (var i in wedding)  if (wedding[i].link == link) 
+            return res.render('wedding.ejs', { data: wedding[i] });
+
+            return Promise.reject('not found');
+        }).catch(e => {
+            res.send(e);
+        });
+    });
 };
 
 function authenticate (req, res, next) {

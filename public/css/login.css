@@ -23,7 +23,7 @@ input {
     font-family: "Open Sans", "century gothic", Arial, Helvetica, sans-serif;
 }
 
-input[type="email"], input[type="password"] {
+input[type="email"], input[type="text"], input[type="password"] {
     margin-top: 32px;
     display: block;
     padding: 10px;
@@ -33,7 +33,7 @@ input[type="email"], input[type="password"] {
     font-size: 15pt;
     outline: none;
 }
-input[type="email"]:focus, input[type="password"]:focus {
+input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
     border: none;
     border-bottom: #009cff solid 2px;
     margin-bottom: -1px;
